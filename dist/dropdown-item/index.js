@@ -31,6 +31,13 @@ VantComponent({
         this.setData({ displayTitle: this.computedDisplayTitle(this.data.value) });
     },
     methods: {
+        refresh(){
+          //刷新当前控件显示的标题
+          let { value, displayTitle } = this.data;
+          displayTitle = this.computedDisplayTitle(value);
+          this.setData({ displayTitle });
+          this.parent.setData({ itemListData: this.parent.data.itemListData });
+        },
         computedDisplayTitle(curValue) {
             const { title, options } = this.data;
             if (title) {
